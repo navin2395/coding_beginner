@@ -33,52 +33,64 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
 GOOD LUCK 😀
 */
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section 😃
-  answers: new Array(4).fill(0),
-  displayResults(type = 'array') {
-    if (type === 'array') console.log(this.answers);
-    else console.log(`Poll Results are ${[...this.answers]}`);
-  },
-  registerNewAnswer() {
-    const answer = Number(
-      prompt(
-        `${this.question} \n ${this.options.join(
-          '\n'
-        )} \n (Write option number)`
-      )
-    );
-    switch (answer) {
-      case 0:
-        this.answers[0]++;
-        break;
-      case 1:
-        this.answers[1]++;
-        break;
-      case 2:
-        this.answers[2]++;
-        break;
-      case 3:
-        this.answers[3]++;
-        break;
-      default:
-        alert('Invalid entry');
-    }
-    console.log(this.answers);
-    this.displayResults('string');
-  },
-};
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section 😃
+//   answers: new Array(4).fill(0),
+//   displayResults(type = 'array') {
+//     if (type === 'array') console.log(this.answers);
+//     else console.log(`Poll Results are ${[...this.answers]}`);
+//   },
+//   registerNewAnswer() {
+//     //get the answer
+//     const answer = Number(
+//       prompt(
+//         `${this.question} \n ${this.options.join(
+//           '\n'
+//         )} \n (Write option number)`
+//       )
+//     );
+//     //Register the answer
+//     typeof answer === 'number' &&
+//       answer < this.answer.length &&
+//       this.answers[answer]++;
 
-document
-  .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+//     console.log(this.answers);
+//     this.displayResults('string');
+//   },
+// };
 
-//   [5, 2, 3]
-//  [1, 5, 3, 9, 6, 1]
+// document
+//   .querySelector('.poll')
+//   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-poll.displayResults.call({ answers: [5, 2, 3] }, 'array');
+// //   [5, 2, 3]
+// //  [1, 5, 3, 9, 6, 1]
 
-const display_1 = poll.displayResults.bind({ answers: [1, 5, 3, 9, 6, 1] });
-display_1('string');
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'array');
+
+// const display_1 = poll.displayResults.bind({ answers: [1, 5, 3, 9, 6, 1] });
+// display_1('string');
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+// *
+// This is more of a thinking challenge than a coding challenge 🤓
+
+// Take the IIFE below and at the end of the function, attach an event listener that changes the color of the selected h1 element ('header') to blue, each time the BODY element is clicked. Do NOT select the h1 element again!
+
+// And now explain to YOURSELF (or someone around you) WHY this worked! Take all the time you need. Think about WHEN exactly the callback function is executed, and what that means for the variables involved in this example.
+
+// GOOD LUCK 😀
+// */
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', () => {
+    header.style.color = 'blue';
+  });
+})();
